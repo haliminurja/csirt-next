@@ -14,6 +14,7 @@ export default function RfcHighlight() {
         </div>
         <Link
           href={OFFICIAL_RFC2350_PATH}
+          prefetch={false}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex shrink-0 items-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700"

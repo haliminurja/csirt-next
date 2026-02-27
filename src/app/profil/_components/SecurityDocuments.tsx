@@ -21,6 +21,7 @@ export default function SecurityDocuments() {
         <div className="mb-6 flex flex-wrap gap-3">
           <Link
             href={OFFICIAL_PUBLIC_KEY_PATH}
+            prefetch={false}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-max items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-700 dark:hover:text-blue-300"
@@ -49,6 +50,7 @@ export default function SecurityDocuments() {
         <div className="flex flex-wrap gap-3">
           <Link
             href={OFFICIAL_RFC2350_PATH}
+            prefetch={false}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex w-max items-center justify-center rounded-xl bg-slate-900 px-6 py-4 font-bold text-white transition-all hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-700"
@@ -58,6 +60,7 @@ export default function SecurityDocuments() {
           </Link>
           <Link
             href="/lapor-insiden"
+            prefetch={false}
             className="inline-flex w-max items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-4 font-semibold text-slate-700 transition-all hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-700 dark:hover:text-blue-300"
           >
             Lihat Panduan Lapor Insiden

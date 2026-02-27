@@ -159,7 +159,7 @@ export default function LayananPage() {
               <div className="bg-white rounded-4xl p-8 md:p-10 border border-slate-100 shadow-[0_4px_25px_-4px_rgba(0,0,0,0.05)] border-l-[6px] border-l-teal-500 flex flex-col relative z-10">
                 <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Literasi Akademik &amp; Keamanan Pribadi (Awareness)</h3>
                 <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-10 grow">Menyelenggarakan Bimbingan Teknis (Bimtek) &amp; Sosialisasi berkesinambungan bagi seluruh Dosen, Tendik, dan Mahasiswa dalam mencegah pencurian kredensial Sistem Akademik Kampus (SSO/E-Learning) via Serangan Phishing, OTP Fraud.</p>
-                <Link href="/panduan" className="inline-flex items-center justify-center px-6 py-3.5 bg-slate-50 border border-slate-200 text-slate-700 font-bold rounded-2xl hover:bg-slate-800 hover:text-white hover:border-slate-800 transition-all shadow-sm w-full sm:w-auto mt-auto group">
+                <Link href="/panduan" prefetch={false} className="inline-flex items-center justify-center px-6 py-3.5 bg-slate-50 border border-slate-200 text-slate-700 font-bold rounded-2xl hover:bg-slate-800 hover:text-white hover:border-slate-800 transition-all shadow-sm w-full sm:w-auto mt-auto group">
                   Akses Dokumen &amp; Panduan Penuh
                   <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </Link>

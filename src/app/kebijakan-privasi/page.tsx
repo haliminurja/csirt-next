@@ -92,6 +92,7 @@ export default function PrivacyPolicyPage() {
           <div className="mt-6">
             <Link
               href="/lapor-insiden"
+              prefetch={false}
               className="inline-flex items-center rounded-lg bg-slate-900 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-700"
             >
               Lapor Insiden

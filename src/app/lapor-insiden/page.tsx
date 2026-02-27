@@ -103,11 +103,11 @@ export default function LaporInsidenPage() {
               <p className="mt-1 text-lg font-extrabold text-slate-900">{incidentEmail}</p>
               <p className="mt-3 text-xs text-slate-600">
                 Dengan melanjutkan laporan, Anda menyetujui{' '}
-                <Link href="/kebijakan-privasi" className="font-semibold text-blue-700 hover:text-blue-800">
+                <Link href="/kebijakan-privasi" prefetch={false} className="font-semibold text-blue-700 hover:text-blue-800">
                   Kebijakan Privasi
                 </Link>{' '}
                 dan{' '}
-                <Link href="/syarat-ketentuan" className="font-semibold text-blue-700 hover:text-blue-800">
+                <Link href="/syarat-ketentuan" prefetch={false} className="font-semibold text-blue-700 hover:text-blue-800">
                   Syarat &amp; Ketentuan
                 </Link>
                 .
@@ -149,24 +149,28 @@ export default function LaporInsidenPage() {
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 href="/layanan"
+                prefetch={false}
                 className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-700"
               >
                 Lihat Layanan
               </Link>
               <Link
                 href="/panduan"
+                prefetch={false}
                 className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-700"
               >
                 Baca Panduan
               </Link>
               <Link
                 href="/kebijakan-privasi"
+                prefetch={false}
                 className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-700"
               >
                 Kebijakan Privasi
               </Link>
               <Link
                 href="/syarat-ketentuan"
+                prefetch={false}
                 className="inline-flex items-center rounded-lg border border-slate-200 bg-white px-4 py-2 font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-700"
               >
                 Syarat &amp; Ketentuan

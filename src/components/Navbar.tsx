@@ -32,6 +32,7 @@ export default function Navbar() {
             />
             <Link
               href="/"
+              prefetch={false}
               className="text-xl font-extrabold tracking-tight text-slate-900 transition-colors hover:text-blue-700"
             >
               UNUJA<span className="text-blue-600 font-light ml-1">CSIRT</span>
@@ -46,6 +47,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={false}
                   className={`relative py-2 transition-colors ${
                     isActive ? 'text-blue-700' : 'text-slate-600 hover:text-blue-600'
                   }`}
@@ -60,6 +62,7 @@ export default function Navbar() {
 
             <Link
               href="/lapor-insiden"
+              prefetch={false}
               className="ml-2 rounded-lg bg-slate-900 px-4 py-2 text-white shadow-sm transition-colors hover:bg-blue-700"
             >
               Lapor Insiden
@@ -93,6 +96,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={false}
                   onClick={() => setMobileOpen(false)}
                   className={`block px-4 py-2 rounded-lg text-sm font-semibold ${
                     isActive ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-50'
@@ -104,6 +108,7 @@ export default function Navbar() {
             })}
             <Link
               href="/lapor-insiden"
+              prefetch={false}
               className="mx-4 mt-2 block rounded-lg bg-slate-900 px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-700"
             >
               Lapor Insiden

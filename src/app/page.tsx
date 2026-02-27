@@ -42,6 +42,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
                 <Link
                   href="/lapor-insiden"
+                  prefetch={false}
                   className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-blue-600 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/20 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <svg className="mr-3 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,6 +52,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/panduan"
+                  prefetch={false}
                   className="inline-flex justify-center items-center px-8 py-4 border border-slate-200 text-lg font-bold rounded-xl text-slate-700 bg-white/80 backdrop-blur-md hover:bg-slate-50 hover:border-slate-300 transition-all duration-300"
                 >
                   Baca Panduan Keamanan
@@ -138,7 +140,7 @@ export default function Home() {
                 Triase cepat untuk mengisolasi server yang terinfeksi Malware, Ransomware, atau defacement web
                 agar tidak menyebar ke jaringan fakultas lain.
               </p>
-              <Link href="/layanan" className="text-blue-600 font-bold inline-flex items-center group-hover:text-blue-800">
+              <Link href="/layanan" prefetch={false} className="text-blue-600 font-bold inline-flex items-center group-hover:text-blue-800">
                 Lihat Alur Investigasi
                 <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -158,7 +160,7 @@ export default function Home() {
                 Assessment keamanan wajib sebelum aplikasi mahasiswa atau fakultas dideploy ke produksi
                 (Go-Live) untuk memblokir celah injeksi/RCE.
               </p>
-              <Link href="/layanan" className="text-blue-600 font-bold inline-flex items-center group-hover:text-blue-800">
+              <Link href="/layanan" prefetch={false} className="text-blue-600 font-bold inline-flex items-center group-hover:text-blue-800">
                 Kebijakan Audit
                 <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -178,7 +180,7 @@ export default function Home() {
                 Edukasi sivitas akademika terkait Zero-Day ancaman tren, program Vulnerability Disclosure
                 Program (VDP), dan panduan literasi digital.
               </p>
-              <Link href="/panduan" className="text-blue-600 font-bold inline-flex items-center group-hover:text-blue-800">
+              <Link href="/panduan" prefetch={false} className="text-blue-600 font-bold inline-flex items-center group-hover:text-blue-800">
                 Lihat Repositori Edukasi
                 <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

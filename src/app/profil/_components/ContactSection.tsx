@@ -23,7 +23,7 @@ export default function ContactSection() {
           </div>
         </div>
         <div className="md:w-1/3 flex justify-center md:justify-end">
-          <Link href="/lapor-insiden" className="group flex flex-col items-center rounded-xl bg-white px-8 py-4 text-center font-bold text-blue-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+          <Link href="/lapor-insiden" prefetch={false} className="group flex flex-col items-center rounded-xl bg-white px-8 py-4 text-center font-bold text-blue-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
             <svg className="w-8 h-8 mb-2 text-blue-600 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             Lapor Insiden Sekarang
           </Link>

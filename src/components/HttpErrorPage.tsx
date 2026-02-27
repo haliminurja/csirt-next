@@ -111,6 +111,7 @@ export default function HttpErrorPage({
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={false}
                   className={
                     link.variant === 'secondary'
                       ? 'inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50'
@@ -123,6 +124,7 @@ export default function HttpErrorPage({
 
               <Link
                 href="/lapor-insiden"
+                prefetch={false}
                 className="inline-flex items-center rounded-xl border border-red-200 bg-red-50 px-5 py-3 text-sm font-bold text-red-700 transition-colors hover:border-red-300 hover:bg-red-100"
               >
                 Lapor Insiden

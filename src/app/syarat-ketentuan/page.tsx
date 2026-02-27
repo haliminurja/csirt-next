@@ -90,12 +90,14 @@ export default function TermsPage() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/lapor-insiden"
+              prefetch={false}
               className="inline-flex items-center rounded-lg bg-slate-900 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-indigo-700"
             >
               Lapor Insiden
             </Link>
             <Link
               href="/kebijakan-privasi"
+              prefetch={false}
               className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition-colors hover:bg-slate-100"
             >
               Lihat Kebijakan Privasi

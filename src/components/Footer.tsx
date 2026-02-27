@@ -37,7 +37,7 @@ export default function Footer() {
               { href: '/panduan', label: 'Repositori Panduan' },
             ].map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-blue-400 transition-colors flex items-center">
+                <Link href={link.href} prefetch={false} className="hover:text-blue-400 transition-colors flex items-center">
                   <svg className="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -77,8 +77,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
         <p>&copy; {year} UNUJA-CSIRT Universitas Nurul Jadid. Hak Cipta Dilindungi.</p>
         <div className="space-x-4 mt-4 md:mt-0">
-          <Link href="/kebijakan-privasi" className="hover:text-white transition-colors">Kebijakan Privasi</Link>
-          <Link href="/syarat-ketentuan" className="hover:text-white transition-colors">Syarat &amp; Ketentuan</Link>
+          <Link href="/kebijakan-privasi" prefetch={false} className="hover:text-white transition-colors">Kebijakan Privasi</Link>
+          <Link href="/syarat-ketentuan" prefetch={false} className="hover:text-white transition-colors">Syarat &amp; Ketentuan</Link>
         </div>
       </div>
     </footer>
