@@ -19,9 +19,6 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: { exclude: ["error"] },
   },
-  experimental: {
-    optimizePackageImports: ["zustand"],
-  },
   async headers() {
     const securityHeaders = [
       { key: "X-DNS-Prefetch-Control", value: "on" },
