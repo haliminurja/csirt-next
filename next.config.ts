@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
   pageExtensions: ['tsx', 'ts'],
   compress: true,
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['zustand'],
   }
 };
