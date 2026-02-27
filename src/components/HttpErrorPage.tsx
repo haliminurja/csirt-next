@@ -68,7 +68,7 @@ export default function HttpErrorPage({
 
   return (
     <section className="relative overflow-hidden border-b border-slate-200 bg-white py-20 sm:py-24 min-h-[72vh] flex items-center">
-      <div className="absolute inset-0 -z-0">
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-linear-to-br from-blue-50/70 via-white to-indigo-50/70" />
         <div className="absolute top-0 right-0 h-[420px] w-[420px] rounded-full bg-blue-100/50 blur-[120px]" />
         <div className="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-indigo-100/50 blur-[120px]" />
