@@ -58,12 +58,12 @@ export default function Navbar() {
               );
             })}
 
-            <a
-              href="mailto:csirt@unuja.ac.id"
+            <Link
+              href="/lapor-insiden"
               className="ml-2 rounded-lg bg-slate-900 px-4 py-2 text-white shadow-sm transition-colors hover:bg-blue-700"
             >
               Lapor Insiden
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Toggle */}
@@ -102,12 +102,12 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <a
-              href="mailto:csirt@unuja.ac.id"
+            <Link
+              href="/lapor-insiden"
               className="mx-4 mt-2 block rounded-lg bg-slate-900 px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-700"
             >
               Lapor Insiden
-            </a>
+            </Link>
           </div>
         )}
       </div>

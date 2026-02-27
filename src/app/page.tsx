@@ -40,15 +40,15 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
-                <a
-                  href="mailto:csirt@unuja.ac.id"
+                <Link
+                  href="/lapor-insiden"
                   className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl text-white bg-blue-600 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/20 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   <svg className="mr-3 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   Lapor Insiden (Darurat)
-                </a>
+                </Link>
                 <Link
                   href="/panduan"
                   className="inline-flex justify-center items-center px-8 py-4 border border-slate-200 text-lg font-bold rounded-xl text-slate-700 bg-white/80 backdrop-blur-md hover:bg-slate-50 hover:border-slate-300 transition-all duration-300"
