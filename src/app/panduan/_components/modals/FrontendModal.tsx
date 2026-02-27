@@ -1,50 +1,105 @@
+import IssueMatrix, { IssueMatrixItem } from './IssueMatrix';
+
+const frontendCases: IssueMatrixItem[] = [
+  {
+    kondisi: 'Input user menampilkan script aktif di browser',
+    indikasi: 'Muncul popup aneh, request ke domain asing, atau redirect tanpa aksi user',
+    dampak: 'Pencurian session/token dan pengambilalihan akun',
+    responCepat: 'Sanitasi konten tersimpan, invalidate session, aktifkan CSP ketat',
+    pencegahan: 'Larangan innerHTML mentah, sanitasi terstandar, uji XSS sebelum rilis',
+  },
+  {
+    kondisi: 'Token auth bocor lewat JavaScript',
+    indikasi: 'Token terlihat di localStorage/sessionStorage saat inspeksi',
+    dampak: 'Akun dapat diambil alih lewat serangan XSS',
+    responCepat: 'Migrasi token ke HttpOnly cookie, rotate token semua user',
+    pencegahan: 'Session policy berbasis cookie aman dan expiry pendek',
+  },
+  {
+    kondisi: 'Dependency frontend membawa script berbahaya',
+    indikasi: 'Bundle berubah drastis atau request eksternal tak dikenal saat runtime',
+    dampak: 'Supply chain compromise dan exfiltration data',
+    responCepat: 'Rollback lockfile, audit package terbaru, rebuild artifact bersih',
+    pencegahan: 'Pin versi, review package health, aktifkan audit di pipeline',
+  },
+  {
+    kondisi: 'Data sensitif ikut masuk ke bundle client',
+    indikasi: 'Env key/server secret terlihat di source map atau JS bundle',
+    dampak: 'Kredensial bocor dan penyalahgunaan API',
+    responCepat: 'Rotate key, hapus env sensitif dari client config, redeploy',
+    pencegahan: 'Pisah env server/client dan checklist security di build production',
+  },
+];
+
 export default function FrontendModal() {
   return (
     <div className="space-y-6">
-      <p className="text-slate-600 text-sm leading-relaxed">Serangan XSS (Cross-Site Scripting) memungkinkan penyerang menyisipkan kode JavaScript berbahaya yang berjalan di browser korban — mencuri cookie, session, dan data pribadi.</p>
-      <h4 className="font-bold text-slate-800">1. Waspadai XSS via DOM (React/Vue)</h4>
-      <div className="bg-slate-900 text-slate-300 font-mono text-xs p-4 rounded-xl overflow-x-auto shadow-inner space-y-1">
-        <p className="text-red-400">{`// ❌ REACT (SANGAT BERBAHAYA):`}</p>
+      <p className="text-sm leading-relaxed text-slate-600">
+        Serangan frontend umumnya memanfaatkan XSS dan penyimpanan token yang tidak aman. SOP ini memastikan data
+        sesi pengguna tidak mudah dicuri dari browser.
+      </p>
+
+      <h4 className="font-bold text-slate-800">1. Hindari DOM Injection Berbahaya</h4>
+      <div className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-xs text-slate-300 shadow-inner space-y-1">
+        <p className="text-red-400">{`// [X] React berisiko jika tanpa sanitasi`}</p>
         <p>{`<div dangerouslySetInnerHTML={{ __html: userInput }} />`}</p>
-        <p className="text-red-400 mt-2">{`// ❌ VUE (SAMA BERBAHAYANYA):`}</p>
+        <p className="text-red-400 mt-2">{`// [X] Vue berisiko jika input mentah`}</p>
         <p>{`<div v-html="userInput"></div>`}</p>
-        <p className="mt-3 text-emerald-500">{`// ✅ WAJIB gunakan DOMPurify:`}</p>
+        <p className="mt-3 text-emerald-400">{`// [OK] Sanitasi HTML`}</p>
         <p>{`import DOMPurify from 'dompurify';`}</p>
         <p>{`const clean = DOMPurify.sanitize(userInput);`}</p>
-        <p>{`<div dangerouslySetInnerHTML={{ __html: clean }} />`}</p>
       </div>
-      <h4 className="font-bold text-slate-800">2. Token Storage: HttpOnly Cookie, Bukan LocalStorage!</h4>
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="bg-red-50 border border-red-100 rounded-xl p-4">
-          <p className="text-sm font-bold text-red-800 mb-2">{`❌ LocalStorage (Rentan XSS)`}</p>
-          <ul className="text-xs text-red-700 space-y-1">
-            <li>Bisa dibaca oleh JavaScript manapun</li>
-            <li>Satu XSS = semua token tercuri</li>
-            <li>Tidak ada expiry otomatis</li>
+
+      <h4 className="font-bold text-slate-800">2. Penyimpanan Token Sesi</h4>
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-xl border border-red-100 bg-red-50 p-4">
+          <p className="mb-2 text-sm font-bold text-red-800">[X] LocalStorage (Rentan XSS)</p>
+          <ul className="space-y-1 text-xs text-red-700">
+            <li>Dapat dibaca JavaScript yang disisipkan attacker.</li>
+            <li>Satu XSS dapat membocorkan token akses.</li>
+            <li>Tidak ada kontrol HttpOnly.</li>
           </ul>
         </div>
-        <div className="bg-green-50 border border-green-100 rounded-xl p-4">
-          <p className="text-sm font-bold text-green-800 mb-2">{`✅ HttpOnly Cookie (Aman)`}</p>
-          <ul className="text-xs text-green-700 space-y-1">
-            <li>Tidak bisa diakses JavaScript</li>
-            <li>Otomatis dikirim oleh browser</li>
-            <li>Mendukung SameSite &amp; Secure flag</li>
+        <div className="rounded-xl border border-green-100 bg-green-50 p-4">
+          <p className="mb-2 text-sm font-bold text-green-800">[OK] HttpOnly Secure Cookie</p>
+          <ul className="space-y-1 text-xs text-green-700">
+            <li>Tidak dapat dibaca JavaScript di browser.</li>
+            <li>Dapat dikombinasikan dengan SameSite dan Secure.</li>
+            <li>Lebih aman untuk autentikasi sesi.</li>
           </ul>
         </div>
       </div>
-      <h4 className="font-bold text-slate-800">3. Content Security Policy (CSP) di Frontend</h4>
-      <div className="bg-slate-900 text-slate-300 font-mono text-xs p-4 rounded-xl overflow-x-auto shadow-inner space-y-1">
-        <p className="text-slate-500">{`<!-- Meta tag CSP untuk SPA: -->`}</p>
-        <p className="text-green-400">{`<meta http-equiv="Content-Security-Policy"`}</p>
-        <p className="text-green-400 ml-4">{`content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">`}</p>
+
+      <h4 className="font-bold text-slate-800">3. CSP dan Security Headers Frontend</h4>
+      <div className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-xs text-slate-300 shadow-inner space-y-1">
+        <p className="text-slate-500">{`<!-- Contoh CSP untuk SPA -->`}</p>
+        <p>{`default-src 'self';`}</p>
+        <p>{`script-src 'self';`}</p>
+        <p>{`style-src 'self' 'unsafe-inline';`}</p>
+        <p>{`img-src 'self' data:;`}</p>
+        <p>{`frame-ancestors 'none';`}</p>
       </div>
-      <h4 className="font-bold text-slate-800">4. Hindari Dependency Berbahaya</h4>
-      <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
-        <li>Audit <code>package.json</code> secara rutin dengan <code>npm audit</code>.</li>
-        <li>Jangan install package npm yang tidak terverifikasi atau memiliki download rendah.</li>
-        <li>Pin versi dependency di <code>package-lock.json</code> untuk mencegah supply chain attack.</li>
-        <li>Gunakan <strong>Subresource Integrity (SRI)</strong> untuk semua CDN external.</li>
+
+      <h4 className="font-bold text-slate-800">4. Dependency dan Supply Chain</h4>
+      <ul className="list-disc space-y-2 pl-5 text-sm text-slate-700">
+        <li>Audit package dengan <code>npm audit</code> pada setiap merge request.</li>
+        <li>Pin versi dependency pada lockfile.</li>
+        <li>Hindari package tanpa maintainer jelas atau repo yang tidak aktif.</li>
+        <li>Gunakan Subresource Integrity (SRI) untuk script eksternal.</li>
       </ul>
+
+      <h4 className="font-bold text-slate-800">5. Checklist Build Production</h4>
+      <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-700">
+        <li>Source map publik dimatikan jika tidak dibutuhkan.</li>
+        <li>Environment variable sensitif tidak dikirim ke bundle client.</li>
+        <li>Semua endpoint API dipanggil melalui HTTPS.</li>
+        <li>Uji XSS pada field input utama sebelum rilis.</li>
+      </ol>
+
+      <IssueMatrix
+        title="Kondisi Masalah Umum di Frontend"
+        items={frontendCases}
+      />
     </div>
   );
 }

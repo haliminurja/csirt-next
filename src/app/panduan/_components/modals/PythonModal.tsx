@@ -1,49 +1,104 @@
+import IssueMatrix, { IssueMatrixItem } from './IssueMatrix';
+
+const pythonCases: IssueMatrixItem[] = [
+  {
+    kondisi: 'API menerima payload lalu service crash/menjalankan perilaku tidak wajar',
+    indikasi: 'Terdapat input serialized biner atau object tak dikenal dari client',
+    dampak: 'Potensi RCE dan denial of service pada service python',
+    responCepat: 'Blok endpoint terkait, disable parser raw berisiko, rollback ke parser aman JSON',
+    pencegahan: 'Larangan pickle/yaml unsafe untuk input eksternal, schema validation ketat',
+  },
+  {
+    kondisi: 'Endpoint admin bisa diakses host yang tidak sah',
+    indikasi: 'Request admin datang dari origin/domain di luar daftar resmi',
+    dampak: 'Penyalahgunaan panel admin dan kebocoran data',
+    responCepat: 'Perketat ALLOWED_HOSTS/CORS, batasi akses endpoint admin via VPN/internal',
+    pencegahan: 'Pisahkan route admin, enforce authz bertingkat, audit akses rutin',
+  },
+  {
+    kondisi: 'Dependency populer ternyata memiliki CVE kritis',
+    indikasi: 'Laporan audit menunjukkan package dengan severity tinggi/kritis',
+    dampak: 'Eksploitasi supply chain dan compromise aplikasi',
+    responCepat: 'Freeze deployment, patch dependency, jalankan regression test, redeploy',
+    pencegahan: 'Audit dependency di CI dan kebijakan update terjadwal dengan changelog review',
+  },
+  {
+    kondisi: 'Dokumentasi API production terekspos publik',
+    indikasi: '/docs atau /redoc dapat diakses anonim',
+    dampak: 'Endpoint sensitif mudah dipetakan attacker',
+    responCepat: 'Batasi docs dengan auth atau nonaktifkan di production',
+    pencegahan: 'Pisahkan konfigurasi dev/prod dan checklist release wajib',
+  },
+];
+
 export default function PythonModal() {
   return (
     <div className="space-y-6">
-      <p className="text-slate-600 text-sm leading-relaxed">Python banyak digunakan untuk sistem Machine Learning, API backend, dan web scraping di lingkungan kampus. Panduan ini mencakup kerentanan kritis yang sering terabaikan.</p>
-      <h4 className="font-bold text-slate-800">1. Bahaya Deserialization (Insecure Pickle)</h4>
-      <p className="text-slate-500 text-xs mb-2">Pickle dapat mengeksekusi kode arbitrer saat deserialisasi. Jangan pernah gunakan untuk data dari luar.</p>
-      <div className="bg-slate-900 text-slate-300 font-mono text-xs p-4 rounded-xl overflow-x-auto shadow-inner space-y-1">
-        <p className="text-red-400"># SANGAT FATAL (Arbitrary Code Execution):</p>
+      <p className="text-sm leading-relaxed text-slate-600">
+        Python digunakan luas untuk API, automasi, dan layanan data di kampus. SOP ini fokus pada celah kritis:
+        deserialization, injection, salah konfigurasi production, dan dependency rentan.
+      </p>
+
+      <h4 className="font-bold text-slate-800">1. Hindari Deserialization Berbahaya</h4>
+      <p className="mb-2 text-xs text-slate-500">
+        Jangan gunakan <code>pickle.loads</code> untuk input eksternal karena dapat mengeksekusi kode.
+      </p>
+      <div className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-xs text-slate-300 shadow-inner space-y-1">
+        <p className="text-red-400"># [X] RCE risk</p>
         <p>import pickle</p>
-        <p>data = pickle.loads(request.body) <span className="text-slate-500"># RCE!</span></p>
-        <p className="mt-2 text-green-400"># SOLUSI BENAR:</p>
+        <p>data = pickle.loads(request.body)</p>
+        <p className="mt-2 text-green-400"># [OK] Gunakan JSON aman</p>
         <p>import json</p>
         <p>{`data = json.loads(request.body.decode('utf-8'))`}</p>
       </div>
-      <h4 className="font-bold text-slate-800">2. Django ORM Safety &amp; Raw Query</h4>
-      <div className="bg-slate-900 text-slate-300 font-mono text-xs p-4 rounded-xl overflow-x-auto shadow-inner space-y-1">
-        <p className="text-red-400"># SQL Injection via raw query:</p>
+
+      <h4 className="font-bold text-slate-800">2. SQL Safety Django/FastAPI</h4>
+      <div className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-xs text-slate-300 shadow-inner space-y-1">
+        <p className="text-red-400"># [X] Raw query rentan injection</p>
         <p>{`User.objects.raw(f"SELECT * FROM users WHERE nim='{nim}'")`}</p>
-        <p className="mt-2 text-green-400"># AMAN (parameterized):</p>
+        <p className="mt-2 text-green-400"># [OK] Parameterized query</p>
         <p>{`User.objects.raw("SELECT * FROM users WHERE nim=%s", [nim])`}</p>
-        <p className="text-green-400"># PALING AMAN (ORM):</p>
+        <p className="text-green-400"># [OK] ORM</p>
         <p>{`User.objects.filter(nim=nim).first()`}</p>
       </div>
+
       <h4 className="font-bold text-slate-800">3. Konfigurasi Production Django</h4>
-      <div className="bg-slate-900 text-slate-300 font-mono text-xs p-4 rounded-xl overflow-x-auto shadow-inner space-y-1">
-        <p className="text-slate-500"># settings.py (PRODUCTION)</p>
-        <p className="text-green-400">DEBUG = False</p>
-        <p className="text-green-400">{`ALLOWED_HOSTS = ['siakad.unuja.ac.id']`}</p>
-        <p className="text-green-400">SECURE_SSL_REDIRECT = True</p>
-        <p className="text-green-400">SESSION_COOKIE_SECURE = True</p>
-        <p className="text-green-400">CSRF_COOKIE_SECURE = True</p>
-        <p className="text-green-400">SECURE_HSTS_SECONDS = 31536000</p>
-        <p className="text-green-400">SECURE_HSTS_INCLUDE_SUBDOMAINS = True</p>
-        <p className="text-green-400">{`SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')`} <span className="text-slate-500"># dari .env!</span></p>
+      <div className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-xs text-slate-300 shadow-inner space-y-1">
+        <p>DEBUG = False</p>
+        <p>{`ALLOWED_HOSTS = ['siakad.unuja.ac.id']`}</p>
+        <p>SECURE_SSL_REDIRECT = True</p>
+        <p>SESSION_COOKIE_SECURE = True</p>
+        <p>CSRF_COOKIE_SECURE = True</p>
+        <p>SECURE_HSTS_SECONDS = 31536000</p>
+        <p>{`SECRET_KEY = os.environ['DJANGO_SECRET_KEY']`}</p>
       </div>
-      <h4 className="font-bold text-slate-800">4. Dependency Scanning &amp; Virtual Environment</h4>
-      <div className="bg-slate-900 text-slate-300 font-mono text-xs p-4 rounded-xl overflow-x-auto shadow-inner space-y-1">
-        <p className="text-slate-500"># Audit kerentanan dependency:</p>
-        <p className="text-green-400">$ pip install safety</p>
-        <p className="text-green-400">$ safety check --full-report</p>
-        <p className="text-slate-500 mt-2"># Selalu gunakan virtual environment:</p>
+
+      <h4 className="font-bold text-slate-800">4. Dependency dan Supply Chain Control</h4>
+      <div className="overflow-x-auto rounded-xl bg-slate-900 p-4 font-mono text-xs text-slate-300 shadow-inner space-y-1">
         <p className="text-green-400">$ python -m venv venv</p>
-        <p className="text-green-400">$ source venv/bin/activate</p>
-        <p className="text-green-400">$ pip freeze {'>'} requirements.txt</p>
+        <p className="text-green-400">$ pip install -r requirements.txt</p>
+        <p className="text-green-400">$ pip install safety pip-audit</p>
+        <p className="text-green-400">$ safety check --full-report</p>
+        <p className="text-green-400">$ pip-audit</p>
       </div>
-      <div className="bg-sky-50 border border-sky-200 rounded-xl p-4 text-sm text-sky-800"><strong>FastAPI:</strong> Gunakan <code>Pydantic</code> untuk validasi input otomatis, aktifkan CORS hanya untuk domain kampus, dan jangan expose <code>/docs</code> endpoint di production.</div>
+
+      <h4 className="font-bold text-slate-800">5. FastAPI Baseline</h4>
+      <ul className="list-disc space-y-2 pl-5 text-sm text-slate-700">
+        <li>Gunakan Pydantic model untuk validasi semua input request.</li>
+        <li>Batasi CORS hanya ke domain resmi kampus.</li>
+        <li>Nonaktifkan endpoint docs publik pada production jika tidak diperlukan.</li>
+        <li>Tambahkan rate limiting dan timeout per endpoint sensitif.</li>
+      </ul>
+
+      <div className="rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm text-sky-800">
+        <strong>Checklist Lulus SOP:</strong> tidak ada pickle pada input eksternal, DEBUG mati, secret dari env,
+        dependency diaudit, dan validasi input aktif pada seluruh endpoint.
+      </div>
+
+      <IssueMatrix
+        title="Kondisi Masalah Umum di Service Python"
+        items={pythonCases}
+      />
     </div>
   );
 }

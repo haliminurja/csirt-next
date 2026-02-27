@@ -12,16 +12,30 @@ import { modalRegistry } from './_components/modals';
 export default function PanduanPage() {
   const [activeTab, setActiveTab] = useState<Category>('all');
   const [openModal, setOpenModal] = useState<string | null>(null);
+  const [query, setQuery] = useState('');
   const close = () => setOpenModal(null);
 
-  const filtered = useMemo(
-    () => activeTab === 'all' ? guideCards : guideCards.filter((c) => c.category.includes(activeTab)),
-    [activeTab]
-  );
+  const tabCounts = useMemo(() => {
+    return {
+      all: guideCards.length,
+      sysadmin: guideCards.filter((c) => c.category.includes('sysadmin')).length,
+      developer: guideCards.filter((c) => c.category.includes('developer')).length,
+      user: guideCards.filter((c) => c.category.includes('user')).length,
+    } satisfies Record<Category, number>;
+  }, []);
+
+  const filtered = useMemo(() => {
+    const base = activeTab === 'all' ? guideCards : guideCards.filter((c) => c.category.includes(activeTab));
+    const term = query.trim().toLowerCase();
+    if (!term) return base;
+    return base.filter((card) =>
+      [card.title, card.desc, card.badge, card.id].some((field) => field.toLowerCase().includes(term))
+    );
+  }, [activeTab, query]);
 
   return (
     <div className="dark:bg-slate-950">
-      <HeroSection />
+      <HeroSection totalGuides={guideCards.length} />
       <RfcHighlight />
       <GuideCardGrid
         cards={filtered}
@@ -29,6 +43,10 @@ export default function PanduanPage() {
         activeTab={activeTab}
         onTabChange={setActiveTab}
         onCardClick={setOpenModal}
+        query={query}
+        onQueryChange={setQuery}
+        totalCards={guideCards.length}
+        tabCounts={tabCounts}
       />
       
       <ExternalLinks />

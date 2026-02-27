@@ -1,4 +1,8 @@
-export default function HeroSection() {
+interface HeroSectionProps {
+  totalGuides: number;
+}
+
+export default function HeroSection({ totalGuides }: HeroSectionProps) {
   return (
     <div className="relative overflow-hidden border-b border-slate-200 bg-white py-24 lg:py-32 dark:border-slate-800 dark:bg-slate-950">
       <div className="absolute inset-0 z-0">
@@ -18,6 +22,17 @@ export default function HeroSection() {
         <p className="mx-auto mb-10 max-w-4xl text-lg font-light leading-relaxed text-slate-600 md:text-xl dark:text-slate-300">
           Panduan teknis komprehensif dan materi edukasi keamanan digital untuk seluruh sivitas akademika. Disesuaikan berdasarkan peran pengguna: Sysadmin, Developer, Dosen &amp; Mahasiswa.
         </p>
+        <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
+          <span className="rounded-full border border-teal-200 bg-teal-50 px-4 py-2 font-semibold text-teal-700">
+            {totalGuides} Modul Panduan
+          </span>
+          <span className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 font-semibold text-blue-700">
+            3 Peran Utama
+          </span>
+          <span className="rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 font-semibold text-indigo-700">
+            SOP + Checklist Operasional
+          </span>
+        </div>
       </div>
     </div>
   );

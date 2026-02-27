@@ -148,7 +148,7 @@ export const modalRegistry: Record<string, ModalConfig> = {
     headerBorder: 'border-red-200',
     titleColor: 'text-red-800',
     Content: RansomwareModal,
-    footerLabel: 'Acknowledge SOP',
+    footerLabel: 'Pahami SOP Darurat',
     footerClassName: 'px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow-sm',
   },
 };
