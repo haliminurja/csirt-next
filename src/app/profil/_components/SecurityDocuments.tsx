@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getPdfRoute } from '@/lib/pdf-docs';
+import { OFFICIAL_PUBLIC_KEY_PATH, OFFICIAL_RFC2350_PATH } from '@/lib/official-documents';
 
 export default function SecurityDocuments() {
   return (
@@ -18,6 +18,16 @@ export default function SecurityDocuments() {
           <li>Verifikasi fingerprint kunci sebelum enkripsi untuk mencegah salah tujuan.</li>
           <li>Jangan kirim password, OTP, token aktif, atau private key dalam bentuk apa pun.</li>
         </ul>
+        <div className="mb-6 flex flex-wrap gap-3">
+          <Link
+            href={OFFICIAL_PUBLIC_KEY_PATH}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-max items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-700 dark:hover:text-blue-300"
+          >
+            Unduh Public Key (.asc)
+          </Link>
+        </div>
         <div className="bg-slate-900 rounded-xl p-5 text-left border border-slate-800 shadow-inner overflow-x-auto text-sm">
           <p className="text-slate-400 font-mono mb-1 text-xs uppercase tracking-wider">User ID / Pemilik:</p>
           <p className="text-green-400 font-mono mb-4">CSIRT UNUJA (UNUJA-CSIRT) &lt;csirt@unuja.ac.id&gt;</p>
@@ -38,7 +48,7 @@ export default function SecurityDocuments() {
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
-            href={getPdfRoute('rfc-2350-unuja')}
+            href={OFFICIAL_RFC2350_PATH}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex w-max items-center justify-center rounded-xl bg-slate-900 px-6 py-4 font-bold text-white transition-all hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-700"

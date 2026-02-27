@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getPdfRoute } from '@/lib/pdf-docs';
+import { OFFICIAL_RFC2350_PATH } from '@/lib/official-documents';
 
 export default function RfcHighlight() {
   return (
@@ -13,7 +13,7 @@ export default function RfcHighlight() {
           <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">Standar deskripsi CSIRT berdasarkan IETF, mencakup kewenangan, jam operasional, dan spesifikasi layanan. Dokumen ini wajib dibaca oleh seluruh PIC Unit IT Fakultas.</p>
         </div>
         <Link
-          href={getPdfRoute('rfc-2350-unuja')}
+          href={OFFICIAL_RFC2350_PATH}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex shrink-0 items-center rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700"

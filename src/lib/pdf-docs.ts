@@ -1,3 +1,5 @@
+import { OFFICIAL_RFC2350_PATH } from '@/lib/official-documents';
+
 export const PDF_DOCS = {
   'microservice-api': {
     title: 'Pedoman Microservice & API',
@@ -33,7 +35,7 @@ export const PDF_DOCS = {
   },
   'rfc-2350-unuja': {
     title: 'Dokumen RFC 2350 UNUJA-CSIRT',
-    publicPath: '/dist/pdf/RFC-2350-UNUJA-CSIRT.pdf',
+    publicPath: '/rfc2350.pdf',
   },
 } as const;
 
@@ -44,5 +46,9 @@ export function getPdfDoc(slug: string) {
 }
 
 export function getPdfRoute(slug: PdfDocSlug) {
+  if (slug === 'rfc-2350-unuja') {
+    return OFFICIAL_RFC2350_PATH;
+  }
+
   return `/docs/${slug}`;
 }
