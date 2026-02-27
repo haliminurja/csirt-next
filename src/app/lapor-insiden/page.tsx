@@ -1,49 +1,59 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import ReportActions from './_components/ReportActions';
 
 const incidentEmail = 'csirt@unuja.ac.id';
-const reportSubject = '[LAPOR-INSIDEN] [Jenis Insiden] - [Unit/Sistem] - [Tanggal]';
+const reportSubjectFormat = '[LAPOR-INSIDEN] [Jenis Insiden] - [Unit/Sistem] - [Tanggal]';
 
-const reportTemplate = [
-  'Halo Tim CSIRT UNUJA,',
-  '',
-  'Saya melaporkan insiden:',
-  '1) Nama + unit + kontak aktif:',
-  '2) Waktu kejadian (WIB):',
-  '3) Layanan/akun/sistem terdampak:',
-  '4) Kronologi singkat (2-3 kalimat):',
-  '5) Dampak saat ini:',
-  '6) Bukti terlampir (screenshot/log/notifikasi):',
-  '',
-  'Mohon tindak lanjut. Terima kasih.',
-].join('\n');
+const essentialData = [
+  'Nama pelapor, unit, dan nomor kontak aktif.',
+  'Waktu kejadian pertama (tanggal + jam WIB).',
+  'Layanan/akun/perangkat yang terdampak.',
+  'Kronologi singkat: apa yang terjadi dan kapan.',
+  'Dampak saat ini (contoh: tidak bisa login, website berubah, layanan lambat).',
+  'Bukti pendukung minimal 1 lampiran yang jelas.',
+];
 
-const reportMailto = `mailto:${incidentEmail}?subject=${encodeURIComponent('[LAPOR-INSIDEN] Laporan Awal')}&body=${encodeURIComponent(reportTemplate)}`;
-const reportChecklist = [
-  'Saya sudah isi nama, unit, dan kontak aktif.',
-  'Saya sudah tulis waktu dan kronologi singkat.',
-  'Saya sudah lampirkan bukti minimal 1 file.',
+const manualReportSteps = [
+  'Buka aplikasi email yang Anda gunakan.',
+  'Isi penerima: csirt@unuja.ac.id.',
+  'Isi subjek sesuai format standar agar mudah ditriase.',
+  'Isi isi email dengan data wajib secara singkat dan jelas.',
+  'Lampirkan bukti (screenshot/log/notifikasi).',
+  'Kirim email, lalu cek inbox/spam untuk balasan.',
+];
+
+const afterSendSteps = [
+  'Simpan bukti asli sampai penanganan selesai.',
+  'Jika ada bukti baru, balas pada email yang sama (jangan kirim thread baru).',
+  'Jika kondisi memburuk atau layanan berhenti total, kirim pembaruan secepatnya.',
 ];
 
 const faqItems = [
   {
-    q: 'Berapa lama isi laporan?',
-    a: 'Sekitar 2-3 menit jika data inti dan bukti sudah siap.',
+    q: 'Siapa saja yang boleh melapor?',
+    a: 'Semua pengguna layanan kampus boleh melapor jika melihat kejadian mencurigakan atau gangguan layanan.',
   },
   {
     q: 'Kalau data belum lengkap bagaimana?',
     a: 'Kirim dulu laporan awal, lalu tambah bukti dengan balas email yang sama.',
   },
   {
+    q: 'Apa bukti paling minimal?',
+    a: 'Minimal satu bukti yang jelas, misalnya screenshot layar atau notifikasi kejadian.',
+  },
+  {
+    q: 'Apakah laporan harus panjang?',
+    a: 'Tidak. Fokus pada data inti: siapa, kapan, apa yang terdampak, dampak, dan bukti.',
+  },
+  {
     q: 'Boleh kirim selain email?',
-    a: 'Untuk saat ini kanal resmi pelaporan adalah email ke csirt@unuja.ac.id.',
+    a: 'Kanal resmi pelaporan saat ini adalah email ke csirt@unuja.ac.id.',
   },
 ];
 
 export const metadata: Metadata = {
   title: 'Lapor Insiden',
-  description: 'Halaman lapor insiden yang mudah dan cepat untuk pemula.',
+  description: 'Informasi cara lapor insiden yang baik, jelas, mudah dipahami, dan dikirim manual via email resmi.',
 };
 
 export default function LaporInsidenPage() {
@@ -53,22 +63,23 @@ export default function LaporInsidenPage() {
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
           <div className="border-b border-slate-200 bg-linear-to-r from-blue-50 via-white to-indigo-50 px-6 py-8 md:px-10">
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-700">Lapor Insiden Cepat</p>
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">Mudah, Ringkas, dan Langsung Kirim</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">Informasi Cara Lapor Insiden yang Baik</h1>
             <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base">
-              Isi format singkat, lampirkan bukti, lalu kirim ke <span className="font-semibold text-slate-800">{incidentEmail}</span>.
+              Halaman ini fokus pada informasi cara lapor yang baik tanpa istilah membingungkan. Ikuti alur di bawah, lalu kirim manual ke email resmi{' '}
+              <span className="font-semibold text-slate-800">{incidentEmail}</span>.
             </p>
             <div className="mt-4 inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-600">
-              Estimasi: 2-3 menit
+              Estimasi isi laporan: 3-5 menit
             </div>
           </div>
 
           <div className="px-6 py-6 md:px-10">
-            <h2 className="text-lg font-bold text-slate-900 md:text-xl">3 Langkah Cepat</h2>
+            <h2 className="text-lg font-bold text-slate-900 md:text-xl">Alur Lapor (3 Langkah)</h2>
             <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
               {[
-                { title: '1. Isi Data Inti', desc: 'Nama, waktu, sistem terdampak, kronologi singkat.' },
-                { title: '2. Lampirkan Bukti', desc: 'Minimal 1 screenshot/log/notifikasi yang jelas.' },
-                { title: '3. Kirim Email', desc: 'Klik tombol kirim di bawah.' },
+                { title: '1. Catat Data Inti', desc: 'Siapa pelapor, kapan kejadian, apa yang terdampak.' },
+                { title: '2. Siapkan Bukti', desc: 'Lampirkan minimal 1 bukti yang jelas dan relevan.' },
+                { title: '3. Kirim Email Manual', desc: 'Kirim ke email resmi CSIRT dan tunggu balasan triase.' },
               ].map((item) => (
                 <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                   <p className="text-sm font-bold text-slate-900">{item.title}</p>
@@ -79,18 +90,29 @@ export default function LaporInsidenPage() {
           </div>
 
           <div className="border-t border-slate-200 bg-slate-50 px-6 py-6 md:px-10">
-            <h2 className="text-lg font-bold text-slate-900 md:text-xl">Template Laporan Singkat</h2>
-            <p className="mt-2 text-sm text-slate-600">Gunakan subjek berikut agar laporan cepat masuk triase:</p>
-            <code className="mt-2 block rounded-md border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700">{reportSubject}</code>
+            <h2 className="text-lg font-bold text-slate-900 md:text-xl">Data Wajib Dalam Laporan</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Isi poin berikut agar laporan cepat dipahami dan diproses:
+            </p>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+              {essentialData.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
 
-            <ReportActions
-              mailto={reportMailto}
-              template={reportTemplate}
-              tone="blue"
-              emailLabel="Kirim Laporan Sekarang"
-              checklistItems={reportChecklist}
-              checklistTitle="Cek cepat sebelum kirim"
-            />
+            <div className="mt-4 rounded-xl border border-blue-200 bg-blue-50 p-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-blue-700">Email Resmi Pelaporan</p>
+              <p className="mt-1 text-lg font-extrabold text-slate-900">{incidentEmail}</p>
+              <p className="mt-1 text-sm text-slate-700">Kirim manual dari aplikasi email Anda ke alamat di atas.</p>
+              <p className="mt-3 text-xs font-bold uppercase tracking-wide text-blue-700">Format Subjek Email</p>
+              <code className="mt-1 block rounded-md border border-blue-200 bg-white px-3 py-2 text-xs text-slate-700">{reportSubjectFormat}</code>
+              <a
+                href={`mailto:${incidentEmail}`}
+                className="mt-3 inline-flex items-center rounded-lg border border-blue-300 bg-white px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100"
+              >
+                Buka Aplikasi Email
+              </a>
+            </div>
 
             <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
               Jangan kirim password, OTP, token, atau private key.
@@ -98,7 +120,23 @@ export default function LaporInsidenPage() {
           </div>
 
           <div className="border-t border-slate-200 bg-white px-6 py-6 md:px-10">
-            <h3 className="text-lg font-bold text-slate-900">FAQ Singkat</h3>
+            <h3 className="text-lg font-bold text-slate-900">Cara Kirim Laporan Manual</h3>
+            <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-700">
+              {manualReportSteps.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ol>
+
+            <h3 className="mt-6 text-lg font-bold text-slate-900">Setelah Mengirim, Lakukan Ini</h3>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+              {afterSendSteps.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="border-t border-slate-200 bg-white px-6 py-6 md:px-10">
+            <h3 className="text-lg font-bold text-slate-900">FAQ</h3>
             <div className="mt-3 space-y-2">
               {faqItems.map((item) => (
                 <details key={item.q} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
