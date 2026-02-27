@@ -13,17 +13,16 @@ export default function Home() {
         {/* Elegant subtle background pattern */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-linear-to-br from-blue-50/80 via-white to-indigo-50/80" />
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full mix-blend-multiply filter blur-[120px] opacity-70 translate-x-1/3 -translate-y-1/3" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-100/50 rounded-full mix-blend-multiply filter blur-[120px] opacity-70 -translate-x-1/3 translate-y-1/3" />
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIwdi0yMHptLTIwIDBoMjB2MjBIMHYtMjB6bTIwLTIwaDIwdjIwSDIwdjIweiIgZmlsbD0iIzMzNDE1NSIgZmlsbC1vcGFjaXR5PSIwLjAzIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=')] opacity-60" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-100/40 opacity-70 translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-indigo-100/40 opacity-70 -translate-x-1/3 translate-y-1/3" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full pt-16 pb-16">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
             {/* Left Content */}
             <div className="lg:w-1/2 text-center lg:text-left">
-              <div className="inline-flex items-center px-4 py-2 rounded-full border border-blue-200 bg-white/60 backdrop-blur-md shadow-sm text-blue-700 text-sm font-bold tracking-wide uppercase mb-8">
-                <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-3 animate-pulse" />
+              <div className="inline-flex items-center px-4 py-2 rounded-full border border-blue-200 bg-white shadow-sm text-blue-700 text-sm font-bold tracking-wide uppercase mb-8">
+                <span className="flex h-2 w-2 rounded-full bg-blue-600 mr-3" />
                 Status Keamanan: Aman Aktif
               </div>
 
@@ -53,7 +52,7 @@ export default function Home() {
                 <Link
                   href="/panduan"
                   prefetch={false}
-                  className="inline-flex justify-center items-center px-8 py-4 border border-slate-200 text-lg font-bold rounded-xl text-slate-700 bg-white/80 backdrop-blur-md hover:bg-slate-50 hover:border-slate-300 transition-all duration-300"
+                  className="inline-flex justify-center items-center px-8 py-4 border border-slate-200 text-lg font-bold rounded-xl text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-300 transition-all duration-300"
                 >
                   Baca Panduan Keamanan
                 </Link>
@@ -64,7 +63,7 @@ export default function Home() {
             <div className="lg:w-1/2 relative w-full max-w-lg lg:max-w-none mx-auto hidden md:block">
               <div className="relative w-full aspect-square md:aspect-auto md:h-[500px]">
                 {/* Card 1: Shield */}
-                <div className="absolute top-10 right-10 w-64 bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-white z-20 animate-[float_6s_ease-in-out_infinite]">
+                <div className="absolute top-10 right-10 w-64 bg-white rounded-2xl p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 z-20 animate-float">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-600 mr-4">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,7 +88,7 @@ export default function Home() {
                 </div>
 
                 {/* Card 2: Server Monitor */}
-                <div className="absolute bottom-10 left-10 w-72 bg-white/90 backdrop-blur-xl rounded-2xl p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-white z-10 animate-[float_8s_ease-in-out_infinite_reverse]">
+                <div className="absolute bottom-10 left-10 w-72 bg-white rounded-2xl p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 z-10 animate-float" style={{ animationDelay: '-3s' }}>
                   <div className="flex items-center mb-5 justify-between">
                     <h3 className="font-bold text-slate-900 text-lg">Monitor Server</h3>
                     <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-md">Live</span>
@@ -105,8 +104,8 @@ export default function Home() {
                 </div>
 
                 {/* Central Decor Circle */}
-                <div className="absolute inset-0 m-auto w-80 h-80 border-[0.5rem] border-blue-50/50 rounded-full border-dashed animate-[spin_40s_linear_infinite] pointer-events-none" />
-                <div className="absolute inset-0 m-auto w-64 h-64 border-[1rem] border-indigo-50/50 rounded-full border-dotted animate-[spin_30s_linear_infinite_reverse] pointer-events-none" />
+                <div className="absolute inset-0 m-auto w-80 h-80 border-[0.5rem] border-blue-100/30 rounded-full border-dashed pointer-events-none" />
+                <div className="absolute inset-0 m-auto w-64 h-64 border-[1rem] border-indigo-100/30 rounded-full border-dotted pointer-events-none" />
               </div>
             </div>
           </div>

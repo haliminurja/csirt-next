@@ -3,13 +3,12 @@ export default function HeroSection() {
     <div className="relative overflow-hidden border-b border-slate-200 bg-white py-24 lg:py-32 dark:border-slate-800 dark:bg-slate-950">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-linear-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900" />
-        <div className="absolute -top-32 -right-32 h-[500px] w-[500px] rounded-full bg-blue-50/80 blur-[80px] opacity-70 mix-blend-multiply dark:bg-blue-900/30 dark:mix-blend-normal" />
-        <div className="absolute -bottom-32 -left-32 h-[500px] w-[500px] rounded-full bg-indigo-50/80 blur-[80px] opacity-70 mix-blend-multiply dark:bg-indigo-900/30 dark:mix-blend-normal" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
+        <div className="absolute -top-32 -right-32 h-[500px] w-[500px] rounded-full bg-blue-50/60 opacity-70 dark:bg-blue-900/30" />
+        <div className="absolute -bottom-32 -left-32 h-[500px] w-[500px] rounded-full bg-indigo-50/60 opacity-70 dark:bg-indigo-900/30" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <div className="mb-8 inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold tracking-wide text-slate-700 uppercase shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-          <span className="relative flex h-3 w-3 mr-3"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" /><span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600" /></span>
+          <span className="relative flex h-3 w-3 mr-3"><span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600" /></span>
           Katalog Layanan Resmi Sesuai Standar BSSN
         </div>
         <h1 className="mb-8 max-w-5xl text-4xl font-extrabold tracking-tight text-slate-900 leading-[1.1] md:text-6xl lg:text-7xl dark:text-slate-100">

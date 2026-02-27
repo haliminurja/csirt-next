@@ -70,13 +70,13 @@ export default function HttpErrorPage({
     <section className="relative overflow-hidden border-b border-slate-200 bg-white py-20 sm:py-24 min-h-[72vh] flex items-center">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-linear-to-br from-blue-50/70 via-white to-indigo-50/70" />
-        <div className="absolute top-0 right-0 h-[420px] w-[420px] rounded-full bg-blue-100/50 blur-[120px]" />
-        <div className="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-indigo-100/50 blur-[120px]" />
+        <div className="absolute top-0 right-0 h-[420px] w-[420px] rounded-full bg-blue-100/40" />
+        <div className="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-indigo-100/40" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr]">
-          <div className="rounded-3xl border border-slate-200 bg-white/90 p-8 shadow-[0_25px_50px_-20px_rgba(15,23,42,0.22)] backdrop-blur-md sm:p-10">
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_25px_50px_-20px_rgba(15,23,42,0.22)] sm:p-10">
             <div className={`inline-flex items-center rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] ${tone.badge}`}>
               <span className={`mr-2 h-2 w-2 rounded-full ${tone.dot}`} />
               HTTP {resolvedCode}
@@ -139,7 +139,7 @@ export default function HttpErrorPage({
               <p className="mt-3 text-sm font-semibold text-slate-700">{title}</p>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_20px_45px_-25px_rgba(15,23,42,0.25)] backdrop-blur-md">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_45px_-25px_rgba(15,23,42,0.25)]">
               <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-700">Langkah Rekomendasi</h2>
               <ul className="mt-4 space-y-2 text-sm leading-relaxed text-slate-600">
                 <li>Periksa ulang URL, metode, dan data request.</li>

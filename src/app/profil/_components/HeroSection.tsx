@@ -3,9 +3,7 @@ export default function HeroSection() {
     <div className="relative overflow-hidden border-b border-slate-200 bg-white py-20 lg:py-28 dark:border-slate-800 dark:bg-slate-950">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-linear-to-br from-blue-50/50 via-white to-indigo-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950/40" />
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-100/50 blur-[100px] opacity-70 mix-blend-multiply dark:bg-blue-900/30 dark:mix-blend-normal" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-indigo-100/50 blur-[100px] opacity-70 mix-blend-multiply dark:bg-indigo-900/30 dark:mix-blend-normal" />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIwdi0yMHptLTIwIDBoMjB2MjBIMHYtMjB6bTIwLTIwaDIwdjIwSDIwdjIweiIgZmlsbD0iIzMzNDE1NSIgZmlsbC1vcGFjaXR5PSIwLjAyIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=')] opacity-50 dark:opacity-20" />
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-100/40 opacity-70 dark:bg-blue-900/30" />\n        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-indigo-100/40 opacity-70 dark:bg-indigo-900/30" />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <div className="mb-8 inline-flex items-center rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold tracking-wide text-blue-700 uppercase shadow-sm dark:border-blue-800/70 dark:bg-slate-900 dark:text-blue-300">

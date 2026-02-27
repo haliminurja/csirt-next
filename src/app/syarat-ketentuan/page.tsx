@@ -52,7 +52,7 @@ export default function TermsPage() {
     <div className="bg-slate-50">
       <section className="relative overflow-hidden border-b border-slate-200 bg-white">
         <div className="absolute inset-0 bg-linear-to-br from-indigo-50/80 via-white to-blue-50/80" />
-        <div className="absolute bottom-0 left-0 h-80 w-80 -translate-x-1/4 translate-y-1/4 rounded-full bg-indigo-100/60 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-80 w-80 -translate-x-1/4 translate-y-1/4 rounded-full bg-indigo-100/40" />
         <div className="relative mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-indigo-700">Dokumen Legal</p>
           <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">Syarat &amp; Ketentuan</h1>
