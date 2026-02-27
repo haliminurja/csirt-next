@@ -4,14 +4,20 @@ const nextConfig: NextConfig = {
   output: "standalone",
   trailingSlash: true,
   reactStrictMode: true,
-  poweredByHeader: false, 
+  poweredByHeader: false,
   images: {
     unoptimized: true,
   },
   compiler: {
-    removeConsole: true, 
+    removeConsole: true,
   },
-  productionBrowserSourceMaps: false, 
+  productionBrowserSourceMaps: false,
+  pageExtensions: ['tsx', 'ts'],
+  compress: true,
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['zustand'],
+  }
 };
 
 export default nextConfig;

@@ -30,6 +30,16 @@ export function proxy(request: NextRequest): NextResponse {
 
   h.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
 
+  // ── Framework fingerprint obfuscation ──
+  h.delete('X-Powered-By');
+  h.delete('Server');
+  h.delete('x-nextjs-cache');
+  h.delete('x-nextjs-matched-path');
+  h.delete('x-next-cache-tags');
+  h.delete('x-middleware-rewrite');
+  h.delete('x-middleware-next');
+  h.set('Server', 'UNUJA-CSIRT');
+
   return res;
 }
 

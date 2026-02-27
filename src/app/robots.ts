@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/_next/',
+      disallow: ['/_next/', '/error/', '/docs/'],
     },
     sitemap: 'https://csirt.unuja.ac.id/sitemap.xml',
   };
