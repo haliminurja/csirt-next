@@ -10,13 +10,13 @@ export default function Organization() {
   return (
     <div className="mb-24">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-extrabold text-slate-900 mb-4 border-b-2 border-slate-200 inline-block pb-2">Struktur Organisasi (Tim Ahli)</h2>
-        <p className="text-slate-500 max-w-2xl mx-auto">Susunan fungsional analis keamanan yang siap siaga merespon eskalasi ancaman siber.</p>
+        <h2 className="mb-4 inline-block border-b-2 border-slate-200 pb-2 text-3xl font-extrabold text-slate-900 dark:border-slate-700 dark:text-slate-100">Struktur Organisasi (Tim Ahli)</h2>
+        <p className="mx-auto max-w-2xl text-slate-500 dark:text-slate-400">Susunan fungsional analis keamanan yang siap siaga merespon eskalasi ancaman siber.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {members.map((member) => (
-          <div key={member.name} className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center">
-            <div className="w-24 h-24 mb-6 rounded-full bg-slate-100 border-4 border-white shadow-md flex items-center justify-center relative">
+          <div key={member.name} className="flex flex-col items-center rounded-3xl border border-slate-100 bg-white p-8 text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+            <div className="relative mb-6 flex h-24 w-24 items-center justify-center rounded-full border-4 border-white bg-slate-100 shadow-md dark:border-slate-800 dark:bg-slate-800">
               <Image src={`https://ui-avatars.com/api/?name=${member.avatar}&background=${member.avatarBg}&color=fff`} alt="Avatar" width={96} height={96} className="w-full h-full rounded-full" unoptimized />
               {member.verified && (
                 <div className="absolute bottom-0 right-0 w-6 h-6 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center" title="Verified Staff">
@@ -24,9 +24,9 @@ export default function Organization() {
                 </div>
               )}
             </div>
-            <h3 className="text-xl font-bold text-slate-900">{member.name}</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">{member.name}</h3>
             <p className={`${member.roleColor} text-sm font-semibold mb-3`}>{member.role}</p>
-            <p className="text-slate-500 text-sm">{member.desc}</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{member.desc}</p>
           </div>
         ))}
       </div>

@@ -11,11 +11,11 @@ export default function LayananPage() {
   const close = () => setOpenModal(null);
 
   return (
-    <>
+    <div className="dark:bg-slate-950">
       <HeroSection />
 
       {/* Main Content */}
-      <div className="bg-white py-20 md:py-28 min-h-screen">
+      <div className="min-h-screen bg-white py-20 md:py-28 dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="mb-20 md:mb-28 text-center max-w-4xl mx-auto">
@@ -88,17 +88,56 @@ export default function LayananPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { id: 'vapt', color: 'indigo', title: 'Vulnerability Assessment (VAPT) Sistem Baru', desc: 'Wajib bagi Developer Internal/Vendor Eksternal yang mengembangkan sistem informasi baru atau API terpusat, pengujian penetrasi mandiri ini mengevaluasi OWASP Top 10.', cta: 'Syarat Audit Sistem', icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
-                { id: 'advisory', color: 'blue', title: 'Notifikasi & Peringatan Keamanan Terpusat', desc: 'Pemantauan Threat Intelligence untuk mengawal versi Framework (Laravel), CMS (Wordpress Fakultas), OS Linux, & Servis Aplikasi dari ancaman baru.', cta: 'Distribusi Advisory', icon: 'M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9' },
-                { id: 'vdp', color: 'emerald', title: 'Vulnerability Disclosure Program (Etis)', desc: 'Fasilitas legal (jalur aman) untuk memproses laporan temuan celah yang ditemui secara tidak sengaja oleh Pengguna Umum atau Peneliti White Hat.', cta: 'SOP Pelaporan (PoC)', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+                {
+                  id: 'vapt',
+                  title: 'Vulnerability Assessment (VAPT) Sistem Baru',
+                  desc: 'Wajib bagi Developer Internal/Vendor Eksternal yang mengembangkan sistem informasi baru atau API terpusat, pengujian penetrasi mandiri ini mengevaluasi OWASP Top 10.',
+                  cta: 'Syarat Audit Sistem',
+                  icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+                  cardHover: 'hover:border-indigo-200',
+                  iconTone: 'border-indigo-50 text-indigo-600',
+                  iconHover: 'group-hover:border-indigo-600 group-hover:bg-indigo-600',
+                  titleHover: 'group-hover:text-indigo-700',
+                  ctaTone: 'border-indigo-50 text-indigo-600',
+                },
+                {
+                  id: 'advisory',
+                  title: 'Notifikasi & Peringatan Keamanan Terpusat',
+                  desc: 'Pemantauan Threat Intelligence untuk mengawal versi Framework (Laravel), CMS (Wordpress Fakultas), OS Linux, & Servis Aplikasi dari ancaman baru.',
+                  cta: 'Distribusi Advisory',
+                  icon: 'M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9',
+                  cardHover: 'hover:border-blue-200',
+                  iconTone: 'border-blue-50 text-blue-600',
+                  iconHover: 'group-hover:border-blue-600 group-hover:bg-blue-600',
+                  titleHover: 'group-hover:text-blue-700',
+                  ctaTone: 'border-blue-50 text-blue-600',
+                },
+                {
+                  id: 'vdp',
+                  title: 'Vulnerability Disclosure Program (Etis)',
+                  desc: 'Fasilitas legal (jalur aman) untuk memproses laporan temuan celah yang ditemui secara tidak sengaja oleh Pengguna Umum atau Peneliti White Hat.',
+                  cta: 'SOP Pelaporan (PoC)',
+                  icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+                  cardHover: 'hover:border-emerald-200',
+                  iconTone: 'border-emerald-50 text-emerald-600',
+                  iconHover: 'group-hover:border-emerald-600 group-hover:bg-emerald-600',
+                  titleHover: 'group-hover:text-emerald-700',
+                  ctaTone: 'border-emerald-50 text-emerald-600',
+                },
               ].map((item) => (
-                <div key={item.id} className={`bg-white rounded-4xl p-8 border border-slate-100 shadow-[0_4px_25px_-4px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-2 hover:border-${item.color}-200 transition-all duration-300 flex flex-col relative group cursor-pointer overflow-hidden`} onClick={() => setOpenModal(item.id)}>
-                  <div className={`w-16 h-16 bg-white border-2 border-${item.color}-50 text-${item.color}-600 rounded-2xl flex items-center justify-center shrink-0 mb-8 group-hover:bg-${item.color}-600 group-hover:border-${item.color}-600 group-hover:text-white transition-all duration-300 shadow-sm relative z-10`}>
+                <div
+                  key={item.id}
+                  className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-4xl border border-slate-100 bg-white p-8 shadow-[0_4px_25px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 ${item.cardHover}`}
+                  onClick={() => setOpenModal(item.id)}
+                >
+                  <div
+                    className={`relative z-10 mb-8 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-2 bg-white shadow-sm transition-all duration-300 group-hover:text-white dark:bg-slate-900 ${item.iconTone} ${item.iconHover}`}
+                  >
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} /></svg>
                   </div>
-                  <h3 className={`text-xl font-bold text-slate-900 mb-4 relative z-10 group-hover:text-${item.color}-700 transition-colors leading-tight`}>{item.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-8 grow relative z-10">{item.desc}</p>
-                  <span className={`text-${item.color}-600 text-sm font-bold group-hover:underline flex items-center mt-auto border-t border-${item.color}-50 pt-5 relative z-10`}>{item.cta} <svg className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
+                  <h3 className={`relative z-10 mb-4 text-xl font-bold leading-tight text-slate-900 transition-colors dark:text-slate-100 ${item.titleHover}`}>{item.title}</h3>
+                  <p className="relative z-10 mb-8 grow text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.desc}</p>
+                  <span className={`relative z-10 mt-auto flex items-center border-t pt-5 text-sm font-bold group-hover:underline ${item.ctaTone}`}>{item.cta} <svg className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
                 </div>
               ))}
             </div>
@@ -150,17 +189,56 @@ export default function LayananPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { id: 'esign', color: 'emerald', title: 'Sertifikat Elektronik (e-Sign) & SSL', desc: 'Fasilitasi integrasi Tanda Tangan Elektronik (TTE) Tersertifikasi BSRE untuk ijazah/surat digital serta pengelolaan SSL/TLS seluruh sub-domain.', cta: 'Layanan Sertifikasi', icon: 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z' },
-                { id: 'audit-kami', color: 'blue', title: 'Audit Indeks KAMI & Keamanan SPBE', desc: 'Pendampingan evaluasi tingkat kematangan keamanan informasi institusi berdasarkan framework Indeks KAMI BSSN.', cta: 'Prosedur Audit SPBE', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
-                { id: 'drill', color: 'red', title: 'Cyber Security Drill & Simulation', desc: 'Latihan simulasi serangan siber (Red-Teaming vs Blue-Teaming) untuk menguji kesiapan tim IT Fakultas dan Pusat.', cta: 'Jadwal Drill Tahunan', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
+                {
+                  id: 'esign',
+                  title: 'Sertifikat Elektronik (e-Sign) & SSL',
+                  desc: 'Fasilitasi integrasi Tanda Tangan Elektronik (TTE) Tersertifikasi BSRE untuk ijazah/surat digital serta pengelolaan SSL/TLS seluruh sub-domain.',
+                  cta: 'Layanan Sertifikasi',
+                  icon: 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z',
+                  cardHover: 'hover:border-emerald-200',
+                  iconTone: 'border-emerald-50 text-emerald-600',
+                  iconHover: 'group-hover:border-emerald-600 group-hover:bg-emerald-600',
+                  titleHover: 'group-hover:text-emerald-700',
+                  ctaTone: 'border-emerald-50 text-emerald-600',
+                },
+                {
+                  id: 'audit-kami',
+                  title: 'Audit Indeks KAMI & Keamanan SPBE',
+                  desc: 'Pendampingan evaluasi tingkat kematangan keamanan informasi institusi berdasarkan framework Indeks KAMI BSSN.',
+                  cta: 'Prosedur Audit SPBE',
+                  icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
+                  cardHover: 'hover:border-blue-200',
+                  iconTone: 'border-blue-50 text-blue-600',
+                  iconHover: 'group-hover:border-blue-600 group-hover:bg-blue-600',
+                  titleHover: 'group-hover:text-blue-700',
+                  ctaTone: 'border-blue-50 text-blue-600',
+                },
+                {
+                  id: 'drill',
+                  title: 'Cyber Security Drill & Simulation',
+                  desc: 'Latihan simulasi serangan siber (Red-Teaming vs Blue-Teaming) untuk menguji kesiapan tim IT Fakultas dan Pusat.',
+                  cta: 'Jadwal Drill Tahunan',
+                  icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+                  cardHover: 'hover:border-red-200',
+                  iconTone: 'border-red-50 text-red-600',
+                  iconHover: 'group-hover:border-red-600 group-hover:bg-red-600',
+                  titleHover: 'group-hover:text-red-700',
+                  ctaTone: 'border-red-50 text-red-600',
+                },
               ].map((item) => (
-                <div key={item.id} className={`bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_4px_25px_-4px_rgba(0,0,0,0.05)] hover:-translate-y-2 hover:border-${item.color}-200 transition-all duration-300 flex flex-col relative group cursor-pointer overflow-hidden`} onClick={() => setOpenModal(item.id)}>
-                  <div className={`w-16 h-16 bg-white border-2 border-${item.color}-50 text-${item.color}-600 rounded-2xl flex items-center justify-center shrink-0 mb-8 group-hover:bg-${item.color}-600 group-hover:border-${item.color}-600 group-hover:text-white transition-all duration-300 shadow-sm relative z-10`}>
+                <div
+                  key={item.id}
+                  className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-[0_4px_25px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 dark:border-slate-800 dark:bg-slate-900 ${item.cardHover}`}
+                  onClick={() => setOpenModal(item.id)}
+                >
+                  <div
+                    className={`relative z-10 mb-8 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border-2 bg-white shadow-sm transition-all duration-300 group-hover:text-white dark:bg-slate-900 ${item.iconTone} ${item.iconHover}`}
+                  >
                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} /></svg>
                   </div>
-                  <h3 className={`text-xl font-bold text-slate-900 mb-4 relative z-10 group-hover:text-${item.color}-700 transition-colors leading-tight`}>{item.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-8 grow relative z-10">{item.desc}</p>
-                  <span className={`text-${item.color}-600 text-sm font-bold group-hover:underline flex items-center mt-auto border-t border-${item.color}-50 pt-5 relative z-10`}>{item.cta} <svg className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
+                  <h3 className={`relative z-10 mb-4 text-xl font-bold leading-tight text-slate-900 transition-colors dark:text-slate-100 ${item.titleHover}`}>{item.title}</h3>
+                  <p className="relative z-10 mb-8 grow text-sm leading-relaxed text-slate-600 dark:text-slate-300">{item.desc}</p>
+                  <span className={`relative z-10 mt-auto flex items-center border-t pt-5 text-sm font-bold group-hover:underline ${item.ctaTone}`}>{item.cta} <svg className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
                 </div>
               ))}
             </div>
@@ -190,6 +268,6 @@ export default function LayananPage() {
           <config.Content />
         </Modal>
       ))}
-    </>
+    </div>
   );
 }

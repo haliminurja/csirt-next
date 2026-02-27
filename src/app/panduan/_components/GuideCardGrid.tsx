@@ -1,4 +1,5 @@
 import { Category, GuideCard } from '../_data/guides';
+import { getPdfRoute } from '@/lib/pdf-docs';
 
 interface Props {
   cards: GuideCard[];
@@ -33,8 +34,8 @@ export default function GuideCardGrid({ cards, tabs, activeTab, onTabChange, onC
             onClick={() => onTabChange(tab.key)}
             className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
               activeTab === tab.key
-                ? 'bg-slate-900 text-white shadow-md'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                ? 'bg-slate-900 text-white shadow-md dark:bg-blue-600'
+                : 'border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
             }`}
           >
             {tab.label}
@@ -47,13 +48,13 @@ export default function GuideCardGrid({ cards, tabs, activeTab, onTabChange, onC
           <div
             key={card.id}
             onClick={() => {
-              if (card.pdfUrl) {
-                window.open(card.pdfUrl, '_blank', 'noopener,noreferrer');
+              if (card.pdfSlug) {
+                window.open(getPdfRoute(card.pdfSlug), '_blank', 'noopener,noreferrer');
               } else {
                 onCardClick(card.id);
               }
             }}
-            className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:-translate-y-2 hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer group relative overflow-hidden"
+            className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-2 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
           >
             <div className="flex items-center justify-between mb-6">
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ${colorMap[card.color]?.bg || 'bg-slate-50'} ${colorMap[card.color]?.text || 'text-slate-600'} ${colorMap[card.color]?.hoverBg || 'group-hover:bg-slate-600'} ${colorMap[card.color]?.hoverText || 'group-hover:text-white'}`}>
@@ -61,12 +62,12 @@ export default function GuideCardGrid({ cards, tabs, activeTab, onTabChange, onC
               </div>
               <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${colorMap[card.color]?.badgeBg || 'bg-slate-50'} ${colorMap[card.color]?.badgeText || 'text-slate-700'} ${colorMap[card.color]?.badgeBorder || 'border-slate-100'}`}>{card.badge}</span>
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">{card.title}</h3>
-            <p className="text-slate-500 text-sm leading-relaxed grow">{card.desc}</p>
-            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-end">
-              <span className={`text-sm font-semibold group-hover:underline flex items-center transition-transform ${card.pdfUrl ? 'text-purple-600' : 'text-blue-600'}`}>
-                {card.pdfUrl ? 'Unduh PDF / Baca' : 'Baca Detail'}
-                {card.pdfUrl ? (
+            <h3 className="mb-3 text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-700 dark:text-slate-100 dark:group-hover:text-blue-300">{card.title}</h3>
+            <p className="grow text-sm leading-relaxed text-slate-500 dark:text-slate-400">{card.desc}</p>
+            <div className="mt-6 flex items-center justify-end border-t border-slate-100 pt-4 dark:border-slate-700">
+              <span className={`text-sm font-semibold group-hover:underline flex items-center transition-transform ${card.pdfSlug ? 'text-purple-600' : 'text-blue-600'}`}>
+                {card.pdfSlug ? 'Unduh PDF / Baca' : 'Baca Detail'}
+                {card.pdfSlug ? (
                   <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                 ) : (
                   <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>

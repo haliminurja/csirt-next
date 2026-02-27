@@ -20,7 +20,7 @@ export default function PanduanPage() {
   );
 
   return (
-    <>
+    <div className="dark:bg-slate-950">
       <HeroSection />
       <RfcHighlight />
       <GuideCardGrid
@@ -52,6 +52,6 @@ export default function PanduanPage() {
           <config.Content />
         </Modal>
       ))}
-    </>
+    </div>
   );
 }

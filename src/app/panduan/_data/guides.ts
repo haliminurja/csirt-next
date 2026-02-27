@@ -1,3 +1,5 @@
+import type { PdfDocSlug } from '@/lib/pdf-docs';
+
 export type Category = 'all' | 'sysadmin' | 'developer' | 'user';
 
 export interface GuideCard {
@@ -8,7 +10,7 @@ export interface GuideCard {
   color: string;
   icon: string;
   badge: string;
-  pdfUrl?: string;
+  pdfSlug?: PdfDocSlug;
 }
 
 export const guideCards: GuideCard[] = [

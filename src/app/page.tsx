@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <div className="dark:bg-slate-950">
       {/* Premium Hero Section */}
-      <div className="relative bg-white overflow-hidden border-b border-slate-200 min-h-[85vh] flex items-center">
+      <div className="relative flex min-h-[85vh] items-center overflow-hidden border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
         {/* Elegant subtle background pattern */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-linear-to-br from-blue-50/80 via-white to-indigo-50/80" />
@@ -112,7 +112,7 @@ export default function Home() {
       </div>
 
       {/* Peta Layanan Section */}
-      <section className="py-24 bg-white">
+      <section className="bg-white py-24 dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 lg:mb-24">
             <span className="text-sm font-bold text-blue-600 uppercase tracking-widest block mb-3">
@@ -188,6 +188,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

@@ -61,14 +61,14 @@ export default function Modal({
   return (
     <div
       ref={modalRef}
-      className="fixed inset-0 z-100 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 p-4 opacity-0 backdrop-blur-sm transition-opacity duration-300"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div
         ref={contentRef}
-        className="bg-white rounded-3xl w-full max-w-4xl shadow-2xl scale-95 transition-transform duration-300 overflow-hidden flex flex-col max-h-[90vh]"
+        className="flex max-h-[90vh] w-full max-w-4xl scale-95 flex-col overflow-hidden rounded-3xl bg-white shadow-2xl transition-transform duration-300 dark:bg-slate-900"
       >
         {/* Header */}
         <div className={`flex justify-between items-center p-6 border-b ${headerBorder} ${headerBg}`}>
@@ -82,7 +82,7 @@ export default function Modal({
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-white shrink-0"
+            className="shrink-0 rounded-full p-2 text-slate-400 transition-colors hover:bg-white hover:text-red-500 dark:hover:bg-slate-800"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -91,11 +91,11 @@ export default function Modal({
         </div>
 
         {/* Body */}
-        <div className="p-8 overflow-y-auto">{children}</div>
+        <div className="overflow-y-auto p-8 text-slate-700 dark:text-slate-300">{children}</div>
 
         {/* Footer */}
         {footerContent && (
-          <div className="p-6 border-t border-slate-100 bg-slate-50 flex justify-end">
+          <div className="flex justify-end border-t border-slate-100 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900/70">
             {footerContent}
           </div>
         )}
