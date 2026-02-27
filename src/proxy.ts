@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest): NextResponse {
+export function proxy(request: NextRequest): NextResponse {
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
   const nonce = btoa(String.fromCharCode(...array));
