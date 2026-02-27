@@ -2,9 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import AppStateHydrator from '@/components/AppStateHydrator';
-import AlertTray from '@/components/AlertTray';
-import OpsSidebar from '@/components/OpsSidebar';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://csirt.unuja.ac.id'),
@@ -38,15 +35,12 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body
-        className="flex min-h-screen flex-col bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100"
+        className="flex min-h-screen flex-col bg-slate-50 text-slate-900 antialiased selection:bg-blue-600 selection:text-white"
         style={{ fontFamily: '"Segoe UI", "Helvetica Neue", Arial, sans-serif' }}
       >
-        <AppStateHydrator />
         <Navbar />
-        <AlertTray />
         <main className="grow">{children}</main>
         <Footer />
-        <OpsSidebar />
       </body>
     </html>
   );
