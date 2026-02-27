@@ -2,7 +2,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 const incidentEmail = 'csirt@unuja.ac.id';
-const reportSubjectFormat = '[LAPOR-INSIDEN] [Jenis Insiden] - [Unit/Sistem] - [Tanggal]';
 
 const essentialData = [
   'Nama pelapor, unit, dan nomor kontak aktif.',
@@ -103,9 +102,6 @@ export default function LaporInsidenPage() {
             <div className="mt-4 rounded-xl border border-blue-200 bg-blue-50 p-4">
               <p className="text-xs font-bold uppercase tracking-wide text-blue-700">Email Resmi Pelaporan</p>
               <p className="mt-1 text-lg font-extrabold text-slate-900">{incidentEmail}</p>
-              <p className="mt-1 text-sm text-slate-700">Kirim manual dari aplikasi email Anda ke alamat di atas.</p>
-              <p className="mt-3 text-xs font-bold uppercase tracking-wide text-blue-700">Format Subjek Email</p>
-              <code className="mt-1 block rounded-md border border-blue-200 bg-white px-3 py-2 text-xs text-slate-700">{reportSubjectFormat}</code>
               <a
                 href={`mailto:${incidentEmail}`}
                 className="mt-3 inline-flex items-center rounded-lg border border-blue-300 bg-white px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100"

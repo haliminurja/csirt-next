@@ -10,15 +10,21 @@ export default function SecurityDocuments() {
         </div>
         <h3 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-100">Pengamanan Komunikasi (PGP)</h3>
         <p className="mb-6 leading-relaxed text-slate-600 dark:text-slate-300">
-          Kami sangat menyarankan pelapor untuk mengenkripsi surel (Email) berisikan *password*, Data Base kotor, atau bukti *Log* injeksi menggunakan Public Key (GPG/PGP) resmi milik CSIRT agar tidak disadap (Man In The Middle).
+          Jika laporan memuat data sensitif, gunakan enkripsi PGP sebelum mengirim email ke CSIRT. Ini membantu
+          menjaga kerahasiaan bukti insiden saat proses pengiriman.
         </p>
+        <ul className="mb-6 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          <li>Gunakan untuk lampiran sensitif: log mentah, dump basis data, atau konfigurasi internal.</li>
+          <li>Verifikasi fingerprint kunci sebelum enkripsi untuk mencegah salah tujuan.</li>
+          <li>Jangan kirim password, OTP, token aktif, atau private key dalam bentuk apa pun.</li>
+        </ul>
         <div className="bg-slate-900 rounded-xl p-5 text-left border border-slate-800 shadow-inner overflow-x-auto text-sm">
           <p className="text-slate-400 font-mono mb-1 text-xs uppercase tracking-wider">User ID / Pemilik:</p>
-          <p className="text-green-400 font-mono mb-4">CSIRT Universitas Nurul Jadid &lt;csirt@unuja.ac.id&gt;</p>
+          <p className="text-green-400 font-mono mb-4">CSIRT UNUJA (UNUJA-CSIRT) &lt;csirt@unuja.ac.id&gt;</p>
           <p className="text-slate-400 font-mono mb-1 text-xs uppercase tracking-wider">Key ID:</p>
-          <p className="text-white font-mono mb-4">0x4A6B89FD</p>
+          <p className="text-white font-mono mb-4">AE293C89ED31483E</p>
           <p className="text-slate-400 font-mono mb-1 text-xs uppercase tracking-wider">Fingerprint:</p>
-          <p className="text-blue-300 font-mono">1A2B 3C4D 5E6F 7G8H 9I0J 1K2L 4A6B 89FD</p>
+          <p className="text-blue-300 font-mono">0008 281F 0293 6456 7BEF  789B AE29 3C89 ED31 483E</p>
         </div>
       </div>
       <div className="p-8 md:p-12 lg:w-1/2 flex flex-col justify-center">
@@ -27,17 +33,26 @@ export default function SecurityDocuments() {
         </div>
         <h3 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-100">Dokumen Resmi RFC 2350</h3>
         <p className="mb-6 leading-relaxed text-slate-600 dark:text-slate-300">
-          Standar tata tertib prosedur *Internet Engineering Task Force (IETF)* yang diakui secara global &amp; BSSN RI. Dokumen RFC kami menampung kewenangan, waktu operasional jam layanan, dan spesifikasi bantuan terpusat untuk Fakultas.
+          RFC 2350 adalah profil resmi layanan CSIRT yang menjelaskan ruang lingkup penanganan, kanal kontak, waktu
+          layanan, serta pola koordinasi insiden. Dokumen ini menjadi acuan pelaporan yang sah dan konsisten.
         </p>
-        <Link
-          href={getPdfRoute('rfc-2350-unuja')}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex w-max items-center justify-center rounded-xl bg-slate-900 px-6 py-4 font-bold text-white transition-all hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-700"
-        >
-          <svg className="w-5 h-5 mr-3 text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-          Unduh RFC2350 (PDF) Terkini
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href={getPdfRoute('rfc-2350-unuja')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex w-max items-center justify-center rounded-xl bg-slate-900 px-6 py-4 font-bold text-white transition-all hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-700"
+          >
+            <svg className="w-5 h-5 mr-3 text-slate-400 transition-colors group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Unduh RFC 2350 (PDF)
+          </Link>
+          <Link
+            href="/lapor-insiden"
+            className="inline-flex w-max items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-4 font-semibold text-slate-700 transition-all hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-blue-700 dark:hover:text-blue-300"
+          >
+            Lihat Panduan Lapor Insiden
+          </Link>
+        </div>
       </div>
     </div>
   );
