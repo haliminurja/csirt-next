@@ -121,12 +121,12 @@ export default function HttpErrorPage({
                 </Link>
               ))}
 
-              <a
-                href="mailto:csirt@unuja.ac.id"
+              <Link
+                href="/lapor-insiden"
                 className="inline-flex items-center rounded-xl border border-red-200 bg-red-50 px-5 py-3 text-sm font-bold text-red-700 transition-colors hover:border-red-300 hover:bg-red-100"
               >
                 Lapor Insiden
-              </a>
+              </Link>
             </div>
           </div>
 

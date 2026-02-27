@@ -1,6 +1,8 @@
+import Link from 'next/link';
+
 export default function ContactSection() {
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-blue-600 p-8 text-white shadow-xl md:p-12 dark:bg-blue-900">
+    <div className="relative overflow-hidden rounded-3xl bg-blue-600 p-8 text-white shadow-xl md:p-12">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIwdi0yMHptLTIwIDBoMjB2MjBIMHYtMjB6bTIwLTIwaDIwdjIwSDIwdjIweiIgZmlsbD0iIzMzNDE1NSIgZmlsbC1vcGFjaXR5PSIwLjE1IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=')] opacity-20" />
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="md:w-2/3">
@@ -21,10 +23,10 @@ export default function ContactSection() {
           </div>
         </div>
         <div className="md:w-1/3 flex justify-center md:justify-end">
-          <a href="mailto:csirt@unuja.ac.id" className="group flex flex-col items-center rounded-xl bg-white px-8 py-4 text-center font-bold text-blue-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl dark:bg-slate-100 dark:text-blue-900">
+          <Link href="/lapor-insiden" className="group flex flex-col items-center rounded-xl bg-white px-8 py-4 text-center font-bold text-blue-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
             <svg className="w-8 h-8 mb-2 text-blue-600 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             Lapor Insiden Sekarang
-          </a>
+          </Link>
         </div>
       </div>
     </div>
